@@ -5,12 +5,11 @@ import bodyParser from "body-parser";
 const app = express();
 
 // Configuring CORS
-app.use(
-    cors({
-        origin: process.env.CORS_ORIGIN,
-        credentials: true
-    })
-);
+app.use(cors({
+    origin: 'https://extraordinary-elf-11b6de.netlify.app/',  // Replace with your frontend URL
+    methods: 'GET, POST, PUT, DELETE',
+    allowedHeaders: 'Content-Type, Authorization',
+}));
 
 app.use(express.static('public'));
 
