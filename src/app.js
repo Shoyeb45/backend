@@ -6,7 +6,7 @@ const app = express();
 
 // Configuring CORS
 app.use(cors({
-    origin: 'http://extraordinary-elf-11b6de.netlify.app/',  // Replace with your frontend URL
+    origin: 'https://extraordinary-elf-11b6de.netlify.app',  // Replace with your frontend URL
     methods: 'GET, POST, PUT, DELETE',
     allowedHeaders: 'Content-Type, Authorization',
 }));
