@@ -104,7 +104,7 @@ const loginUser = asyncHandler ( async (req, res) => {
 
     console.log({refreshToken, accessToken});
     
-    return res
+    res
     .cookie("accessToken", accessToken, cookieOptions)
     .cookie("refreshToken", refreshToken, cookieOptions)
     .json(
