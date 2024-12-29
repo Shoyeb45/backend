@@ -7,33 +7,36 @@ import jwt from "jsonwebtoken";
  * @author Shoyeb Ansari
  * Function to  verify token at current session
  */
-export const verifyJWT = asyncHandler (async (req, _, next) => {
-
+export const verifyJWT = asyncHandler(async (req, _, next) => {
     try {
-        // current access token
-        const token = req.cookies?.accessToken || req.header("Authorization")?.replace("Bearer " , "");
-        
+        console.log("Verifying token...");
+
+        const token = req.cookies?.accessToken || req.header("Authorization")?.replace("Bearer ", "");
+        console.log("Token:", token);
+
         if (!token) {
-            throw new ApiError(401, "Unauthorised request");
+            console.error("No token provided");
+            throw new ApiError(401, "Unauthorized request");
         }
 
-        // Decoded token
         const decodeToken = jwt.verify(token, process.env.ACCESS_TOKEN_SECRET);
-        
-        // Find user by id of the user which we can get from decodedToken         
-        const user = await User.findById(decodeToken._id).select("-password -refreshToken");
+        console.log("Decoded Token:", decodeToken);
 
-        // If it doesn't exist remove it
+        const user = await User.findById(decodeToken._id).select("-password -refreshToken");
+        console.log("User:", user);
+
         if (!user) {
+            console.error("User not found");
             throw new ApiError(401, "Invalid Access Token");
         }
-        
-        // Creating new object named user of req object
+
         req.user = user;
-        next(); // give flag to next middleware
+        next();
     } catch (error) {
+        console.error("JWT Verification Error:", error);
         throw new ApiError(401, error?.message || "Invalid access token");
     }
 });
+
 
 

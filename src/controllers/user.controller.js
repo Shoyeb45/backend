@@ -124,17 +124,17 @@ const loginUser = asyncHandler ( async (req, res) => {
  * 
 */
 const logoutUser = asyncHandler (async (req, res) => {
-    await User.findByIdAndUpdate(  // this method will find and update the databse
+    await User.findByIdAndUpdate(
         req.user._id,
         {
-            $set: { // set is operator which allows us to set the field
-                refreshToken: undefined
+            $unset: {
+                refreshToken: 1 // this removes the field from document
             }
         },
         {
-            new: true   // return value will be update 
+            new: true
         }
-    );
+    )
     
     
     return res
