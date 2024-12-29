@@ -102,9 +102,9 @@ const loginUser = asyncHandler ( async (req, res) => {
     const {refreshToken, accessToken} = await generateRefreshAndAccessToken(user._id);
     const loggedInUser = await User.findById(user._id).select("-password -refreshToken");
 
+    console.log({refreshToken, accessToken});
     
     return res
-    .status(200)
     .cookie("accessToken", accessToken, cookieOptions)
     .cookie("refreshToken", refreshToken, cookieOptions)
     .json(
