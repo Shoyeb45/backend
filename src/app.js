@@ -34,7 +34,9 @@ app.get("/", (req, res) => {
 });
 
 
-
+app.get('/test-cookie', (req, res) => {
+    res.cookie('testCookie', 'testValue', cookieOptions).send('Test cookie set!');
+});
 
 
 // ------------ Routes -----------------
