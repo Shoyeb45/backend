@@ -2,6 +2,7 @@ import express from "express";
 import cors from "cors";
 import cookieParser from "cookie-parser";
 import bodyParser from "body-parser";
+import { cookieOptions } from "./constant.js";
 const app = express();
 
 // Configuring CORS
