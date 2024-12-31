@@ -3,7 +3,8 @@ import mongoose from "mongoose";
 const categorySchema = mongoose.Schema({
     category: {
         type: String,
-        required: true
+        required: true,
+        index: true,
     }
 }, {timestamps: true});
 

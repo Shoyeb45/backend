@@ -4,6 +4,7 @@ const productSchema = mongoose.Schema({
     productName: {
         type: String,
         required: true,
+        index: true,
     },
     category: {
         type: String,
@@ -29,6 +30,7 @@ const productSchema = mongoose.Schema({
     },
     typeOfMaterial: {
         type: String,
+        index: true,
         enum: ["gold", "silver", "labGrownDiamond", "pearls", "stone"]
     }
 }, {timestamps: true});
