@@ -31,7 +31,10 @@ app.use(express.urlencoded({
 app.use(cookieParser());
 
 app.get("/", (req, res) => {
-    res.send("Working fine");
+    
+    res
+    .cookie("test", "testCookie", cookieOptions)
+    .send("Working fine");
 });
 
 
