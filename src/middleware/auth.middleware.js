@@ -8,13 +8,8 @@ import jwt from "jsonwebtoken";
  * Function to  verify token at current session
  */
 export const verifyJWT = asyncHandler(async (req, _, next) => {
-    try {
-        console.log("I am here in verifyJWT");
-        
-        console.log(req.cookies);
-        
+    try {        
         const token = req.cookies?.accessToken || req.header("Authorization")?.replace("Bearer ", "");
-        console.log("Token:", token);
 
         if (!token) {
             console.error("No token provided");
@@ -22,7 +17,6 @@ export const verifyJWT = asyncHandler(async (req, _, next) => {
         }
 
         const decodeToken = jwt.verify(token, process.env.ACCESS_TOKEN_SECRET);
-        console.log("Decoded Token:", decodeToken);
 
         const user = await User.findById(decodeToken._id).select("-password -refreshToken");
 

@@ -47,7 +47,7 @@ app.get('/test-cookie', (req, res) => {
 import userRouter from "./routes/user.route.js";
 import productRouter from "./routes/product.route.js";
 import authLogin from "./routes/auth.route.js";
-
+import cartRouter from "./routes/cart.route.js";
 
 // User api
 app.use("/api/v1/user", userRouter);
@@ -55,6 +55,9 @@ app.use("/api/v1/user", userRouter);
 // product admin api
 app.use("/api/v1/product", productRouter);
 
+// Authentication for login
 app.use("/api/auth", authLogin);
 
+// add to cart route
+app.user("/api/v1/cart", cartRouter);
 export default app;
