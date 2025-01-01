@@ -59,5 +59,5 @@ app.use("/api/v1/product", productRouter);
 app.use("/api/auth", authLogin);
 
 // add to cart route
-app.user("/api/v1/cart", cartRouter);
+app.use("/api/v1/cart", cartRouter);
 export default app;
