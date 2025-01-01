@@ -4,5 +4,4 @@ export const cookieOptions = {
     secure: true,
     sameSite: "None",
     path: "/",
-    maxAge: 24 * 60 * 60 * 1000, // 1 day
 };
